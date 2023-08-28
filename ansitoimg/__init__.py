@@ -14,7 +14,7 @@ from ansitoimg.render import (
 	ansiToSVG,
 	ansiToSVGRender,
 )
-from ansitoimg.utils import TEXT_HEIGHT, TEXT_WIDTH, WIDTH_WIDE, _resolveWidth
+from ansitoimg.utils import TITLE, TEXT_HEIGHT, TEXT_WIDTH, WIDTH_WIDE, _resolveWidth
 
 stdout.reconfigure(encoding="utf-8")
 
@@ -57,6 +57,11 @@ def cli():  # pragma: no cover
 		default=49,
 		help="Explicitly set the width in chars",
 	)
+	parser.add_argument(
+		"--title",
+		default=render.TITLE,
+		help="Set a custom title",
+	)
 
 	args = parser.parse_args()
 	ansi = args.input.read()
@@ -71,9 +76,9 @@ def cli():  # pragma: no cover
 		"htmlrender": ansiToHTMLRender,
 	}
 	if args.plugin is None:
-		ansiToSVG(ansi, args.output, args.theme, width=width)
+		ansiToSVG(ansi, args.output, args.theme, width=width, title=TITLE)
 	elif args.plugin in pluginMap:
-		pluginMap[args.plugin](ansi, args.output, args.theme, width=width)
+		pluginMap[args.plugin](ansi, args.output, args.theme, width=width, title=TITLE)
 	else:
 		print(PLUGIN_HELP)
 		sysexit(1)
