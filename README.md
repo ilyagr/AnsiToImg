@@ -202,6 +202,11 @@ https://help.github.com/en/desktop/contributing-to-projects/cloning-a-repository
 2. Extract the zip archive
 3. Copy/ move to the desired location
 
+## Alternatives and related utilities
+
+- https://github.com/slowli/term-transcript is a similar tool in the
+  Rust ecosystem. It generates SVGs only.
+
 ## Community Files
 
 ### Licence
